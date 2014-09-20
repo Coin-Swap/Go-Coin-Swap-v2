@@ -1,4 +1,4 @@
-package main
+package coinswapapi
 
 import (
     "net/http"
