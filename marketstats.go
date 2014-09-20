@@ -1,9 +1,7 @@
 package coinswapapi
 
 import (
-"strconv"
-"math/rand"
-"net/http"
+"encoding/json"
 )
 
 type MarketStats struct {
@@ -19,15 +17,20 @@ type MarketStats struct {
     Openorders string `json:"openorders"`
 }
 
-// This will create a buy order
-func GetMarketStats(config Config,market string,price float64,amount float64,cookie *http.Cookie) MarketStats {
-    //https://api.coin-swap.net/order/v2/buy/{marketid}/{apikey}/{price}/{amount}
+// The GetMarketStats function will request stats on a specific market.
+// The market variable is a string in the form of a pairing.
+// Example: var market = "DOGE/BTC"
+// You must pass this string variable to the function.
+func GetMarketStats(market string) MarketStats {
+    // Create our url.
+    // Send our URL to the DialCoinSwapPublic function to create an order and receive response.
     var url string
-    url := "https://api.coin-swap.net/market/stats/" + market
-    apiResponse := DialCoinSwap(url, cookie) // Send off our URL to create an order. Receive response.
+    url = "https://api.coin-swap.net/market/stats/" + market
+    apiResponse := DialCoinSwapPublic(url)
 
+    // We receive a json response from the server and unmarshal it.
     var marketStats MarketStats
-    jsonerr := json.Unmarshal(response, &marketStats)
+    jsonerr := json.Unmarshal(apiResponse, &marketStats)
     Errorcheck(jsonerr)
 
     return marketStats

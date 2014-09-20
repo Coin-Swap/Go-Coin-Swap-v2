@@ -1,18 +1,15 @@
 package coinswapapi
 
 import (
-    "os"
-    "fmt"
-    "io/ioutil"
-    "encoding/json"
+"os"
+"fmt"
+"io/ioutil"
+"encoding/json"
 )
 
 type Config struct {
     Apikey string `json:"apikey"`
     Initkey string `json:"initkey"`
-    Market string `json:"market"`
-    Volume float64 `json:"24hrvolume"`
-    Marketid string `json:"marketid"`
 }
 
 func Init_config() Config {
