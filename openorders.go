@@ -20,7 +20,7 @@ Orders []Openorder
 }
 
 // The Openorders function will request all open orders for this user.
-func GetOpenorders(config Config,cookie *http.Cookie) OrderContainer {
+func GetOpenorders(config Config,cookie *http.Cookie) []Openorder {
     // Create our url.
     // Send our URL to the DialCoinSwapPrivate function to create an order and receive response.
     var url string
