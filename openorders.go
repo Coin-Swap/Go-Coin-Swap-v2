@@ -28,7 +28,8 @@ func GetOpenorders(config Config,cookie *http.Cookie) OrderContainer {
     apiResponse := DialCoinSwapPrivate(url, cookie) 
 
     // We receive a json response from the server and unmarshal it.
-    var container OrderContainer
+    //var container OrderContainer
+    var container []Openorder
     err := json.Unmarshal(apiResponse, &container)
     Errorcheck(err)
     return container
