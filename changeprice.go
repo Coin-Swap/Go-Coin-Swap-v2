@@ -7,11 +7,11 @@ import (
 )
 
 type Change struct{
-    orderid string
-    marketid string
-    direction int
-    price string
-    amount string
+    Orderid string
+    Marketid string
+    Direction int
+    Price string
+    Amount string
 }
 
 // The Sell function will create a market order of type sell. You must pass it the config struct,
